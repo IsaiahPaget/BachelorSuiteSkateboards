@@ -1,0 +1,50 @@
+$primary: #3C735F;
+$success: #F2836B;
+$danger: #F24C27;
+$warning: #e08bd3;
+$info: #2da87d;
+$light: #F2EDDC;
+
+@import "~bootstrap/scss/bootstrap";
+
+.colour-rotate {
+	animation: color-rotate 2s;
+	animation-iteration-count: infinite;
+}
+
+html, body {
+	font-family: trajan-pro-3, serif;
+	font-style: normal;
+	font-weight: 500;
+    background-image: url("../public/image0.jpeg");
+	background-size: 400px;
+}
+
+.translator {
+	transition: 500ms;
+}
+
+.show-border {
+	border: black solid 2px;
+}
+
+.translator:hover {
+	translate: 0px -5px;
+	transition: 500ms;
+}
+
+.rm-button-style {
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+}
+
+@keyframes color-rotate {
+	from {
+		filter: hue-rotate(0deg);
+	}
+	to {
+		filter: hue-rotate(360deg);
+	}
+}
+

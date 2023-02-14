@@ -1,0 +1,26 @@
+@import "../../index.scss";
+
+.icon-button {
+	color: #000000;
+	transition: 0.5s;
+	text-decoration: none;
+	backdrop-filter: blur(10px);
+
+}
+.icon-button:hover {
+	color: $primary;
+	translate: 0px -5px;
+}
+
+.logo {
+	max-width: 75px;
+	border-radius: 100%;
+	transition: 500ms;
+}
+
+.logo:hover {
+	max-width: 75px;
+	border-radius: 100%;
+	translate: 0px -5px;
+	transition: 500ms;
+}
