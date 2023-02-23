@@ -1,9 +1,9 @@
-$primary: #3C735F;
-$success: #F2836B;
-$danger: #F24C27;
+$primary: #3c735f;
+$success: #f2836b;
+$danger: #f24c27;
 $warning: #e08bd3;
 $info: #2da87d;
-$light: #F2EDDC;
+$light: #f2eddc;
 
 @import "~bootstrap/scss/bootstrap";
 
@@ -12,13 +12,15 @@ $light: #F2EDDC;
 	animation-iteration-count: infinite;
 }
 
-html, body {
+html,
+body {
 	font-family: trajan-pro-3, serif;
 	font-style: normal;
 	font-weight: 500;
-    background-image: url("../public/image0.jpeg");
-	background-size: 400px;
+	background-image: url("../public/image0.jpeg");
+	background-size: 50%;
 }
+
 
 .translator {
 	transition: 500ms;
@@ -34,9 +36,9 @@ html, body {
 }
 
 .rm-button-style {
-    background-color: transparent;
-    border: none;
-    padding: 0px;
+	background-color: transparent;
+	border: none;
+	padding: 0px;
 }
 
 @keyframes color-rotate {
@@ -47,4 +49,3 @@ html, body {
 		filter: hue-rotate(360deg);
 	}
 }
-

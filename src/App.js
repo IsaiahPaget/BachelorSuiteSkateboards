@@ -1,8 +1,8 @@
-import NavBar from "./components/NavBar/NavBarComponent";
 import ProductCardContainer from "./components/ProductCardContainer/ProductCardContainerComponent.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Contact from "./components/Contact/ContactComponent";
 import FrontImage from "./components/FrontImage/FrontImageComponent";
+import { useState } from "react";
 import "./App.scss";
 
 const router = createBrowserRouter([
@@ -21,6 +21,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+
 	return <RouterProvider router={router} />;
 }
 
