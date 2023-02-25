@@ -4,25 +4,40 @@ import Contact from "./components/Contact/ContactComponent";
 import FrontImage from "./components/FrontImage/FrontImageComponent";
 import { useState } from "react";
 import "./App.scss";
-
-const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <FrontImage />,
-	},
-	{
-		path: "/order",
-		element: <Contact />,
-	},
-	{
-		path: "/products",
-		element: <ProductCardContainer />,
-	},
-]);
+import NavBar from "./components/NavBar/NavBarComponent.js";
 
 function App() {
+	const [cartOpen, setCartOpen] = useState(false);
+	const [frontpage, setFrontPage] = useState(true);
+	const [cartItems, setCartItems] = useState([]);
 
-	return <RouterProvider router={router} />;
+	function handleAddCart(product) {
+		let newArray = cartItems;
+		newArray.push(product);
+		setCartItems(newArray);
+		console.log(cartItems);
+	}
+
+	function handleCartOpen() {
+		setCartOpen(!cartOpen);
+	}
+
+	return (
+		<>
+			{frontpage ? (
+				<FrontImage setFrontPage={setFrontPage} />
+			) : (
+				<main>
+					<NavBar handleCartOpen={handleCartOpen} />
+					{cartOpen ? (
+						<Contact cartItems={cartItems} />
+					) : (
+						<ProductCardContainer handleAddCart={handleAddCart} />
+					)}
+				</main>
+			)}
+		</>
+	);
 }
 
 export default App;

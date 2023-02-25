@@ -1,10 +1,3 @@
 .form-container {
-    max-width: 768px;
-    margin: auto;
-}
-
-.contact-container {
-    background-color: #ffffffd0;
-    height: 75vh;
-	backdrop-filter: blur(10px);
+    width: clamp(50%, 785px, 99%);
 }

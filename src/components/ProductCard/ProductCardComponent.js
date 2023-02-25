@@ -23,8 +23,8 @@ function ProductCard(props) {
 					className='rounded overlay p-3 d-flex flex-column'
 					onSubmit={(e) => {
 						e.preventDefault();
-						props.handleAddCart(props.name)
-						localStorage.setItem('cart', props.cartItems)
+						props.handleAddCart(props.name);
+						
 					}}
 				>
 					<h3 className='fw-bolder text-info'>

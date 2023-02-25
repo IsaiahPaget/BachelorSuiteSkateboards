@@ -1,5 +1,11 @@
 .image {
-    object-fit: cover;
-    width: 100%;
-    min-height: 400px;
- }
+	object-fit: cover;
+    width: clamp(60%,900px,90%)
+}
+.image-container {
+	display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
