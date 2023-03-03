@@ -36,14 +36,30 @@ function ProductCard(props) {
 					</label>
 					<p className='text-dark flex-grow-1'>{props.product.description}</p>
 					{isClicked ? (
-						<button
-							className='border-0 rounded bg-white p-2 text-dark'
-							onClick={() => {
-								cart.addToCart(props.product.id);
-							}}
-						>
-							Add to Cart
-						</button>
+						<div className="d-flex bg-white rounded">
+							<button
+								className='border-0 bg-white p-2 text-dark flex-grow-1'
+								onClick={() => {
+									cart.addToCart(props.product.id);
+								}}
+							>
+								Add to Cart
+							</button>
+							<div className='d-flex flex-column'>
+								<button
+									onClick={() => cart.addToCart(props.product.id)}
+									className='rm-button-style border-bottom px-2'
+								>
+									+
+								</button>
+								<button
+									onClick={() => cart.removeFromCart(props.product.id)}
+									className='rm-button-style fw-bolder px-2'
+								>
+									-
+								</button>
+							</div>
+						</div>
 					) : null}
 				</form>
 			</div>
