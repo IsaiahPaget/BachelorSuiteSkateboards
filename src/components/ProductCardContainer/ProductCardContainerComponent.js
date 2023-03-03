@@ -1,26 +1,24 @@
 import "./ProductCardContainer.scss";
-import products from "../../data";
 import ProductCard from "../ProductCard/ProductCardComponent";
+import FrontImage from "../FrontImage/FrontImageComponent";
 
 function ProductCardContainer(props) {
-
-
 	const Cards = () => {
-		return products.map((product) => {
+		return props.products.map((product) => {
 			return (
 				<ProductCard
-					name={product.name}
-					price={product.price}
-					instock={product.instock}
-					img={product.img}
-					description={product.description}
+					key={product.id}
+					product={product}
 					handleAddCart={props.handleAddCart}
 				/>
 			);
 		});
 	};
 	return (
-		<section className='container pt-3'>
+		<section className='container'>
+			{props.titleImageVisible ? (
+				<FrontImage handleFrontImage={props.handleFrontImage} />
+			) : null}
 			<div className='row'>
 				<Cards />
 			</div>

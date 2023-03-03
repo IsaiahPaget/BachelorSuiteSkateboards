@@ -1,4 +1,11 @@
 import { initializeApp } from "firebase/app";
+import {
+	getFirestore,
+	collection,
+	query,
+	where,
+	getDocs,
+} from "firebase/firestore";
 
 // Import the functions you need from the SDKs you need
 // TODO: Add SDKs for Firebase products that you want to use
@@ -15,4 +22,31 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+let productData = [];
+
+export async function getProductCards() {
+	try {
+		let products = [];
+		const querySnapshot = await getDocs(collection(db, "cards"));
+		querySnapshot.forEach((doc) => {
+			products.push(doc.data());
+		});
+		productData = products;
+		return products;
+	} catch (err) {
+		console.error(err);
+		return;
+	}
+}
+
+export function getProductData(id, products) {
+	try {
+		const product = products.filter(p => p.id === id);
+
+		return product;
+	} catch (err) {
+		console.log(err);
+	}
+}

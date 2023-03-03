@@ -1,42 +1,51 @@
 import ProductCardContainer from "./components/ProductCardContainer/ProductCardContainerComponent.js";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Contact from "./components/Contact/ContactComponent";
-import FrontImage from "./components/FrontImage/FrontImageComponent";
-import { useState } from "react";
 import "./App.scss";
 import NavBar from "./components/NavBar/NavBarComponent.js";
+import { Routes, Route } from "react-router-dom";
+import { ShoppingCartProvider } from "./context/ShoppingCartContext.js";
+import { useState, useEffect } from "react";
+import { getProductCards, getProductData } from "./components/Firebase/Firebase.js";
 
 function App() {
-	const [cartOpen, setCartOpen] = useState(false);
-	const [frontpage, setFrontPage] = useState(true);
-	const [cartItems, setCartItems] = useState([]);
+	const [titleImageVisible, setTitleImageVisible] = useState(true);
+	const [products, setProducts] = useState([]);
 
-	function handleAddCart(product) {
-		let newArray = cartItems;
-		newArray.push(product);
-		setCartItems(newArray);
-		console.log(cartItems);
-	}
+	const handleFrontImage = () => {
+		const front_image = document.getElementById("font_image");
+		front_image.classList.add("image-translate");
+		setTimeout(() => {
+			setTitleImageVisible(false);
+		}, 1000);
+	};
 
-	function handleCartOpen() {
-		setCartOpen(!cartOpen);
-	}
+	
+
+	useEffect(() => {
+		getProductCards().then((card) => {
+			setProducts(card)
+		})
+	}, []);
 
 	return (
-		<>
-			{frontpage ? (
-				<FrontImage setFrontPage={setFrontPage} />
-			) : (
-				<main>
-					<NavBar handleCartOpen={handleCartOpen} />
-					{cartOpen ? (
-						<Contact cartItems={cartItems} />
-					) : (
-						<ProductCardContainer handleAddCart={handleAddCart} />
-					)}
-				</main>
-			)}
-		</>
+		<ShoppingCartProvider>
+			<header className=' shadow bg-header p-2'>
+				<NavBar />
+			</header>
+			<Routes>
+				<Route
+					path='/'
+					element={
+						<ProductCardContainer
+							titleImageVisible={titleImageVisible}
+							handleFrontImage={handleFrontImage}
+							products={products}
+						/>
+					}
+				/>
+				<Route path='/cart' element={<Contact products={products}/>} />
+			</Routes>
+		</ShoppingCartProvider>
 	);
 }
 
