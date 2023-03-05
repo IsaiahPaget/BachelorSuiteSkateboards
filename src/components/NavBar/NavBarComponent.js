@@ -23,7 +23,7 @@ function NavBar() {
 						className='text-deco text-dark'
 						target='_blank'
 					>
-						<i className='fa-brands fa-instagram fa-2xl'></i>
+						<i className='fa-brands fa-instagram fa-2xl icon'></i>
 					</a>
 				</li>
 				<li className='justify-content-center d-flex align-items-center flex-grow-1'>
@@ -37,7 +37,7 @@ function NavBar() {
 						to={cartOpen ? "/" : "/cart"}
 						onClick={() => setCartOpen(!cartOpen)}
 					>
-						<i className='fa fa-cart-shopping fa-2xl'></i>
+						<i className='fa fa-cart-shopping fa-2xl icon'></i>
 						{productsCount > 0 ? (
 							<span className='cart-counter'>{productsCount}</span>
 						) : null}

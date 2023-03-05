@@ -17,7 +17,7 @@ function ProductCard(props) {
 			}}
 			className='col-12 col-md-6 col-lg-4 d-flex mt-3'
 		>
-			<div className='img-container shadow rounded'>
+			<div className='img-container rounded'>
 				<img
 					className='img-css rounded'
 					alt='an image of product'
@@ -30,36 +30,38 @@ function ProductCard(props) {
 						e.preventDefault();
 					}}
 				>
-					<label className='d-flex justify-content-between fw-bolder fs-3 text-dark'>
-						<div>{props.product.name}</div>
-						<div>${props.product.price}</div>
-					</label>
-					<p className='text-dark flex-grow-1'>{props.product.description}</p>
+					<div className='text-dark flex-grow-1'></div>
 					{isClicked ? (
-						<div className="d-flex bg-white rounded">
-							<button
-								className='border-0 bg-white p-2 text-dark flex-grow-1'
-								onClick={() => {
-									cart.addToCart(props.product.id);
-								}}
-							>
-								Add to Cart
-							</button>
-							<div className='d-flex flex-column'>
+						<>
+							<label className='d-flex justify-content-between text-light-dark fw-bolder fs-3'>
+								<div>{props.product.name}</div>
+								<div>${props.product.price}</div>
+							</label>
+							<div className='d-flex border border-2 bg-white rounded'>
 								<button
-									onClick={() => cart.addToCart(props.product.id)}
-									className='rm-button-style border-bottom px-2'
+									className='border-0 rounded bg-white p-2 text-light-dark flex-grow-1'
+									onClick={() => {
+										cart.addToCart(props.product.id);
+									}}
 								>
-									+
+									Add to Cart
 								</button>
-								<button
-									onClick={() => cart.removeFromCart(props.product.id)}
-									className='rm-button-style fw-bolder px-2'
-								>
-									-
-								</button>
+								<div className='d-flex flex-column'>
+									<button
+										onClick={() => cart.addToCart(props.product.id)}
+										className='rm-button-style border-bottom px-2'
+									>
+										+
+									</button>
+									<button
+										onClick={() => cart.removeFromCart(props.product.id)}
+										className='rm-button-style fw-bolder px-2'
+									>
+										-
+									</button>
+								</div>
 							</div>
-						</div>
+						</>
 					) : null}
 				</form>
 			</div>

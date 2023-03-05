@@ -1,5 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
 
+:root {
+	--up-gradient: linear-gradient(to top, #fbf0ff, transparent);
+	--down-gradient: linear-gradient(to bottom, white, transparent)
+}
+
 .colour-rotate {
 	animation: color-rotate 2s;
 	animation-iteration-count: infinite;
@@ -14,6 +19,16 @@ body {
 	background-size: 50%;
 	padding: 0px;
 	margin: 0px;
+}
+
+@media only screen and (max-width: 768px) {
+	body {
+		background-size: 100%;
+	}
+  }
+
+.text-light-dark {
+	color: #636363;
 }
 
 .text-deco {
