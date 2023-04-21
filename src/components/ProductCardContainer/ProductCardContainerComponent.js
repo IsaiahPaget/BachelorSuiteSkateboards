@@ -1,6 +1,7 @@
 import "./ProductCardContainer.scss";
 import ProductCard from "../ProductCard/ProductCardComponent";
 import FrontImage from "../FrontImage/FrontImageComponent";
+import FooterComponent from "../FooterComponent/FooterComponent";
 
 function ProductCardContainer(props) {
 	const Cards = () => {

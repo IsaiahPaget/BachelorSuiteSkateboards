@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext.js";
 import { useState, useEffect } from "react";
 import { getProductCards, getProductData } from "./components/Firebase/Firebase.js";
+import FooterComponent from "./components/FooterComponent/FooterComponent.js";
 
 function App() {
 	const [titleImageVisible, setTitleImageVisible] = useState(true);
@@ -45,6 +46,8 @@ function App() {
 				/>
 				<Route path='/cart' element={<Contact products={products}/>} />
 			</Routes>
+			<FooterComponent/>
+
 		</ShoppingCartProvider>
 	);
 }

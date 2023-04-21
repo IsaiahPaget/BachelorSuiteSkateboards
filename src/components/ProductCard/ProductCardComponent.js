@@ -30,16 +30,16 @@ function ProductCard(props) {
 						e.preventDefault();
 					}}
 				>
-					<div className='text-dark flex-grow-1'></div>
+					<div className='flex-grow-1'></div>
 					{isClicked ? (
 						<>
-							<label className='d-flex justify-content-between text-light-dark fw-bolder fs-3'>
+							<label className='d-flex justify-content-between fw-bolder fs-3'>
 								<div>{props.product.name}</div>
 								<div>${props.product.price}</div>
 							</label>
 							<div className='d-flex border border-2 bg-white rounded'>
 								<button
-									className='border-0 rounded bg-white p-2 text-light-dark flex-grow-1'
+									className='border-0 rounded bg-white p-2 flex-grow-1'
 									onClick={() => {
 										cart.addToCart(props.product.id);
 									}}

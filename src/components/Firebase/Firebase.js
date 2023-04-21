@@ -1,11 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {
-	getFirestore,
-	collection,
-	query,
-	where,
-	getDocs,
-} from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
 
 // Import the functions you need from the SDKs you need
 // TODO: Add SDKs for Firebase products that you want to use
@@ -24,7 +18,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-let productData = [];
 
 export async function getProductCards() {
 	try {
@@ -33,7 +26,6 @@ export async function getProductCards() {
 		querySnapshot.forEach((doc) => {
 			products.push(doc.data());
 		});
-		productData = products;
 		return products;
 	} catch (err) {
 		console.error(err);
@@ -43,10 +35,36 @@ export async function getProductCards() {
 
 export function getProductData(id, products) {
 	try {
-		const product = products.filter(p => p.id === id);
+		const product = products.filter((p) => p.id === id);
 
 		return product;
 	} catch (err) {
 		console.log(err);
+	}
+}
+
+export async function sendEmail(order, email) {
+	console.log(order);
+	try {
+		await addDoc(collection(db, "mail"), {
+			to: email,
+			cc: "bachelorsuiteorders@gmail.com",
+			message: {
+				subject: `Bachelor Suite Skateboards`,
+				html: `
+					<h3>Thank You For Your Order!</h3>
+					<div>
+					${order
+					.map(
+						(product) => `${product.name} $${product.price} x ${product.quantity}<br/>`
+					)
+					.join("")}
+					</div>
+					<p>I will be in touch about payment and shipping!</p>
+			  `,
+			},
+		});
+	} catch (error) {
+		console.error(error);
 	}
 }
