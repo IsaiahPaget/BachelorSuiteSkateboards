@@ -20,7 +20,7 @@ function ProductCard(props) {
 			<div className='img-container rounded'>
 				<img
 					className='img-css rounded'
-					alt='an image of product'
+					alt='skateboard'
 					src={props.product.img}
 				></img>
 				<form
@@ -37,6 +37,7 @@ function ProductCard(props) {
 								<div>{props.product.name}</div>
 								<div>${props.product.price}</div>
 							</label>
+							<p>Comes in an assortment of bottom ply colours</p>
 							<div className='d-flex border border-2 bg-white rounded'>
 								<button
 									className='border-0 rounded bg-white p-2 flex-grow-1'

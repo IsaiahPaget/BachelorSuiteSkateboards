@@ -24,10 +24,8 @@ function Contact(props) {
 		});
 
 		await sendEmail(order, email);
-		setTimeout(() => {
-			
-		}, 2000);
-		window.location.reload();
+		setTimeout(() => {}, 3000);
+		window.location.href = '/';
 	}
 
 	useEffect(() => {
@@ -40,7 +38,11 @@ function Contact(props) {
 
 	return (
 		<section className='container pt-3'>
-			{orderSubmitted ? <h3 className="order-submit">Order Submitted!</h3> : (
+			{orderSubmitted ? (
+				<div className='order-submit'>
+					<h3>Order Submitted!</h3>
+				</div>
+			) : (
 				<form
 					onSubmit={(e) => handleSubmit(e)}
 					className='d-flex flex-column form gap-3 bg-white p-3 shadow rounded'
@@ -60,22 +62,23 @@ function Contact(props) {
 						{cart.items.map((item) => {
 							const product = getProductData(item.id, props.products)[0];
 							return (
-								<div className='d-flex mb-2 rounded p-1 border border-2 border-dark gap-2 align-items-center'>
-									<li key={product.id} className='flex-grow-1 fs-5 fw-bold'>
-										{product.name}
-									</li>
+								<div
+									key={product.id}
+									className='d-flex mb-2 rounded p-1 border border-2 border-dark gap-2 align-items-center'
+								>
+									<li className='flex-grow-1 fs-5 fw-bold'>{product.name}</li>
 									<div className='d-flex gap-4 align-items-center'>
 										<span className='fs-5 fw-bold'>{item.quantity}</span>
 										<div className='d-flex flex-column'>
 											<button
-												type="button"
+												type='button'
 												onClick={() => cart.addToCart(item.id)}
 												className='rm-button-style border-bottom px-2'
 											>
 												+
 											</button>
 											<button
-												type="button"
+												type='button'
 												onClick={() => cart.removeFromCart(item.id)}
 												className='rm-button-style fw-bolder px-2'
 											>

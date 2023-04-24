@@ -30,7 +30,7 @@ function App() {
 
 	return (
 		<ShoppingCartProvider>
-			<header className='bg-header p-2'>
+			<header className='p-2'>
 				<NavBar />
 			</header>
 			<Routes>

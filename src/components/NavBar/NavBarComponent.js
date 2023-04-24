@@ -28,7 +28,7 @@ function NavBar() {
 				</li>
 				<li className='justify-content-center d-flex align-items-center flex-grow-1'>
 					<Link to='/'>
-						<img src='/logo.jpg' className='logo shadow'></img>
+						<img src='/logo.jpg' alt="bachelor suite logo" className='logo shadow'></img>
 					</Link>
 				</li>
 				<li className='justify-content-center d-flex align-items-center flex-grow-1 position-relative'>

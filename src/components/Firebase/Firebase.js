@@ -44,7 +44,6 @@ export function getProductData(id, products) {
 }
 
 export async function sendEmail(order, email) {
-	console.log(order);
 	try {
 		await addDoc(collection(db, "mail"), {
 			to: email,
